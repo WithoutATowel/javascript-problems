@@ -1,0 +1,19 @@
+//5. Write a JavaScript program to rotate the string 'w3resource' in right direction by 
+// periodically removing one letter from the end of the string and attaching it 
+// to the front.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="w3resource">w3resource</p>
+<script>
+window.setInterval(rotate,500);
+function rotate() {
+	var oldValue = document.getElementById("w3resource").innerHTML;
+	var newValue = oldValue.slice(0,-1);
+    newValue = oldValue.slice(-1) + newValue;
+	document.getElementById("w3resource").innerHTML = newValue;
+};
+</script>
+</body>
+</html> 
