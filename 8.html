@@ -1,0 +1,33 @@
+<!-- 8. Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number. If the user input matches with guess number, the program will display a message "Good Work" otherwise display a message "Not matched". -->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<form name="yarp">
+		<input type="number" name="guess">
+		<button id="guessButton" type="button">Guess</button>
+	</form>
+	<p id="message">I've chosen a number between 1-10. Can you guess what it is?</p>
+
+	<script type="text/javascript">
+		var realNumber = Math.floor(Math.random()*10+1);
+		
+		function checkGuess(){
+			var guess = document.forms["yarp"]["guess"].value;
+			if (guess == realNumber) {
+				document.getElementById("message").innerHTML = "Congrats! You guessed it.";
+			} else {
+				document.getElementById("message").innerHTML = "That's not it. Guess again!";
+			};
+		};
+
+		document.getElementById("guessButton").addEventListener('click', checkGuess);
+		document.forms["yarp"].addEventListener('submit', function(e){
+			e.preventDefault();
+			checkGuess();
+		});
+	</script>
+</body>
+</html>
