@@ -1,0 +1,43 @@
+<!-- 11. Write a JavaScript program to convert temperatures to and from Celsius, Fahrenheit. 
+[ Formula : c/5 = (f-32)/9 [ where c = temperature in Celsius and f = temperature in Fahrenheit ] -->
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Problem 11</title>
+</head>
+<body>
+<form submit='#' id='conversionForm'>
+	Celcius to Farenheit: <input type='radio' name='unit' id='celcius' required><br>
+	Farenheit to Celcius: <input type='radio' name='unit' id='farenheit' required><br>
+	<input type='text' id='temp' required>
+	<input type='submit' value='convert'>
+</form>
+<p id='result'></p>
+<script type='text/javascript'>
+	function cToFConverter(unit, temp) {
+		var convertedTemp = 0;
+		if (unit == 'celcius') {
+			convertedTemp = temp*9/5+32;
+		} else if (unit == 'farenheit') {
+			convertedTemp = (temp-32)*5/9;
+		}
+		
+		return convertedTemp;
+	};
+
+	document.getElementById('conversionForm').addEventListener('submit', function(e){
+		e.preventDefault();
+		var unit = '';
+		if(document.getElementById('celcius').checked) {
+			unit = 'celcius'
+		} else if(document.getElementById('farenheit').checked) {
+			unit = 'farenheit'
+		};
+		var temp = document.forms['conversionForm']['temp'].value;
+		document.getElementById('result').innerHTML = 'The result is: ' + cToFConverter(unit, temp);
+	});
+</script>
+</body>
+</html>
