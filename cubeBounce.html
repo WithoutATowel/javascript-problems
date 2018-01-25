@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove()">Click Me</button>
+</p> 
+
+<div id ="container">
+<div id ="animate"></div>
+</div>
+
+<script>
+var elem = document.getElementById("animate");   
+var posX = 0;
+var posY = 0;
+var newPosX = 0;
+var newPosY = 0;
+
+newCoords();
+
+var id = setInterval(mover, 5);
+
+function newCoords() {
+  newPosX = Math.random();
+  newPosY = Math.random();
+  if (newPosX > 0.5) {
+    newPosX = 350;
+  } else {
+    newPosX = 0;
+  }
+  if (newPosY > 0.5) {
+    newPosY = 350;
+  } else {
+    newPosY = 0;
+  }
+}
+
+function mover() {
+  if (posX == newPosX && posY == newPosY) {
+    newCoords();
+  } else if (posX < newPosX && posY < newPosY) {
+    posX++; 
+    posY++;  //+= newPosY / newPosX;
+    elem.style.left = posX + 'px'; 
+    elem.style.top = posY + 'px'; 
+  } else if (posX == newPosX && posY < newPosY) {
+    //posX--; 
+    posY++; //+= newPosY / newPosX;
+    elem.style.left = posX + 'px'; 
+    elem.style.top = posY + 'px';
+  } else if (posX < newPosX && posY == newPosY) {
+    posX++; 
+    //posY -= newPosY / newPosX;
+    elem.style.left = posX + 'px'; 
+    elem.style.top = posY + 'px';
+  } else {
+    posX--; 
+    posY -= newPosY / newPosX;
+    elem.style.left = posX + 'px'; 
+    elem.style.top = posY + 'px';
+  }
+}
+</script>
+
+</body>
+</html>
